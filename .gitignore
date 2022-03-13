@@ -17,7 +17,5 @@
 .prettierignore
 
 # Ignore starter files
-README-template.md
-README.md
 design/**
 style-guide.md
