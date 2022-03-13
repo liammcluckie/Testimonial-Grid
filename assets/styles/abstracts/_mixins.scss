@@ -1,0 +1,15 @@
+// Media Query Mixin
+
+@mixin response($breakpoint) {
+    @if ($breakpoint == md) {
+        @media (min-width: 800px) {
+            @content;
+        }
+    }
+
+    @if ($breakpoint == lg) {
+        @media (min-width: 1440px) {
+            @content;
+        }
+    }
+}
