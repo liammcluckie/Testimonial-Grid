@@ -44,6 +44,22 @@ $margin: (
     @return map-get($margin, $margin-size);
 }
 
+// Media Query Mixin
+
+@mixin response($breakpoint) {
+    @if ($breakpoint == md) {
+        @media (min-width: 800px) {
+            @content;
+        }
+    }
+
+    @if ($breakpoint == lg) {
+        @media (min-width: 1440px) {
+            @content;
+        }
+    }
+}
+
 // Reset
 
 /* Box sizing rules */
@@ -100,15 +116,36 @@ picture {
     display: grid;
     margin-inline: auto;
     width: 85%;
+    max-width: 1440px;
+    grid-gap: margin(xxl);
+    grid-auto-columns: 1fr;
+    grid-template-areas:
+        "one"
+        "two"
+        "three"
+        "four"
+        "five";
+
+    @include response(md) {
+        grid-template-areas:
+            "one one"
+            "two three"
+            "five five"
+            "four four";
+    }
+
+    @include response(lg) {
+        grid-template-areas:
+            "one one two five"
+            "three four four five";
+        margin: margin(xxl) auto;
+    }
 }
 
 .testimonial-card {
     padding: padding(xl);
     border-radius: 8px;
-
-    &:not(:first-of-type) {
-        margin-top: margin(xxl);
-    }
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 
     &--img {
         border-radius: 50%;
@@ -149,14 +186,24 @@ picture {
 
 .testimonial-card:first-of-type {
     background: color(violet) url("../images/bg-pattern-quotation.svg")
-        no-repeat 185px top;
+        no-repeat 85% top;
     color: color(white);
     margin-top: 3rem;
+    grid-area: one;
+
+    @include response(lg) {
+        margin-top: unset;
+    }
 }
 
 .testimonial-card:nth-of-type(2) {
     background-color: color(grey-blue);
     color: color(white);
+    grid-area: two;
+}
+
+.testimonial-card:nth-of-type(3) {
+    grid-area: three;
 }
 
 .testimonial-card:nth-of-type(3),
@@ -168,6 +215,11 @@ picture {
 .testimonial-card:nth-of-type(4) {
     background-color: color(dark-blue);
     color: color(white);
+    grid-area: four;
+}
+
+.testimonial-card:nth-of-type(5) {
+    grid-area: five;
 }
 
 // Attribution
