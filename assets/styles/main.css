@@ -34,6 +34,7 @@ body {
   line-height: 1.5;
   font-family: "Barlow Semi Condensed";
   font-weight: 500;
+  background-color: #ecf2f8;
 }
 
 /* A elements that don't have a class get default styles */
@@ -48,7 +49,90 @@ picture {
   display: block;
 }
 
+.testimonial-grid {
+  display: -ms-grid;
+  display: grid;
+  margin-inline: auto;
+  width: 85%;
+}
+
+.testimonial-card {
+  padding: 1.75rem;
+  border-radius: 8px;
+}
+
+.testimonial-card:not(:first-of-type) {
+  margin-top: 2rem;
+}
+
+.testimonial-card--img {
+  border-radius: 50%;
+  width: 2.25rem;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: one;
+}
+
+.testimonial-card--title {
+  font-weight: 500;
+}
+
+.testimonial-card--intro {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card--content {
+  opacity: 0.7;
+}
+
+.testimonial-card--header {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-columns: 3.5rem auto;
+      grid-template-columns: 3.5rem auto;
+      grid-template-areas: "one two";
+  margin-bottom: 1rem;
+}
+
+.testimonial-card--header .testimonial-card--meta {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: two;
+}
+
+.testimonial-card--header .testimonial-card--meta p {
+  opacity: 0.5;
+}
+
+.testimonial-card:first-of-type {
+  background: #7541c8 url("../images/bg-pattern-quotation.svg") no-repeat 185px top;
+  color: white;
+  margin-top: 3rem;
+}
+
+.testimonial-card:nth-of-type(2) {
+  background-color: #48556a;
+  color: white;
+}
+
+.testimonial-card:nth-of-type(3),
+.testimonial-card:nth-of-type(5) {
+  background-color: white;
+  color: #19212e;
+}
+
+.testimonial-card:nth-of-type(4) {
+  background-color: #19212e;
+  color: white;
+}
+
 .attribution {
+  margin-top: 2rem;
   font-size: 11px;
   text-align: center;
 }
